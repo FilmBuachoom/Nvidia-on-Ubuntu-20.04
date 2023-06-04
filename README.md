@@ -22,7 +22,7 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         My gpu is `Nvidia Tesla T4`.
 
     * Make sure your GPU supports CUDA version ([checked here](https://www.nvidia.com/download/index.aspx)) <br>
-        ![image]()
+        ![5c5399db-f732-4028-92e4-ceb0e7dce300](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/3017252a-36de-49e8-bc03-b07e3b94ca46)
 
         In this case it is used as `CUDA Toolkit 12.0`. CUDA Toolkit 12.0 will be bundled with Nvidia-driver 525. CUDA Toolkit 12.0 is chosen because it uses NVIDIA Docker runtime which will support CUDA version 11.8 and above. Of course, TensorFlow is not supported with CUDA Toolkit 12.0 `in the process of installing CUDA Toolkit will use version 11.2 instead.`
 
