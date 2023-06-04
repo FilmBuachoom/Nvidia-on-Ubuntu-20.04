@@ -31,7 +31,7 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         For `TensorFlow 2.5.0 - 2.11.0`, `CUDA Toolkit 11.2` and `cuDNN 8.1` are supported.
 
     * Verify that Nvidia-driver supports CUDA Toolkit version ([checked here](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#default-to-minor-version)) <br>
-        ![image]()
+        ![image](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/c793bc38-a595-4f40-b519-4a36e1b8c5c4)
 
     * Summary software dependencies <br>
         * Nvidia-driver 525
@@ -57,7 +57,7 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         ```
         nvidia-smi
         ```
-        ![image]()
+        ![image](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/3d1c1baa-a778-47de-bd30-add75d24a586)
 3. Install CUDA Toolkit
     * Download CUDA 11.2 Toolkit ([CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive))
         ```
