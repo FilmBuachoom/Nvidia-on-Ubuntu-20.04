@@ -57,7 +57,8 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         ```
         nvidia-smi
         ```
-        ![image](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/3d1c1baa-a778-47de-bd30-add75d24a586)
+        ![a77dd133-3b92-4444-aad1-0bf41bd204df](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/0ba2f2e5-56b3-4531-a5de-418b5eb091b4)
+
 3. Install CUDA Toolkit
     * Download CUDA 11.2 Toolkit ([CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive))
         ```
@@ -67,7 +68,8 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         ```
         sudo sh cuda_11.2.2_460.32.03_linux.run
         ```
-        ![image]()
+        ![image](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/f2129ebc-ff0d-4c5f-b661-72c609c4c0ea)
+        
 4. Install cuDNN 8.1.1
     * Install prerequisites library
         ```
@@ -102,7 +104,7 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         ```
         nvcc -V
         ```
-        ![image]()
+        ![31242a90-5351-4f19-9e70-f5a32cc5d97e](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/4b2d0dc5-ec35-40c3-abf7-cb5d7b65946a)
 
     * Test Tensorflow version 2.5 - 2.11
         ```
@@ -130,7 +132,7 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         ```
         docker run --gpus all nvidia/cuda:11.2.0-base nvidia-smi
         ```
-        ![image]()
+        ![2a76172b-e0e0-4c21-93ba-c47a68c47e8d](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/f1d75319-f045-44dc-89bd-ca3cd98cdeab)
 
 ## Uninstalling
 1. Uninstall Nvidia driver
