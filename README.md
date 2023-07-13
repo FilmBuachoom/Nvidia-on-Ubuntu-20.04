@@ -3,7 +3,7 @@
 
 Installing NVIDIA drivers is crucial for TensorFlow GPU support, enabling GPU acceleration, providing CUDA and cuDNN libraries, ensuring compatibility and stability, and utilizing extra GPU features.
 
-## Literature Review (Compiled by ChatGPT)
+## ✍️ Literature Review (Compiled by ChatGPT)
 * **NVIDIA driver** <br>
 The NVIDIA driver is software developed by NVIDIA Corporation specifically for NVIDIA graphics processing units (GPUs). It acts as a communication bridge between the operating system and the GPU hardware, providing an interface for software applications to utilize the GPU's capabilities. The driver includes libraries, APIs, and low-level components that enable GPU acceleration and enable features such as parallel processing, high-performance computing, and graphics rendering.
 
@@ -16,7 +16,7 @@ cuDNN (CUDA Deep Neural Network) is a GPU-accelerated library developed by NVIDI
 * **NVIDIA Docker runtime** <br>
 NVIDIA Docker runtime is a software component that integrates Docker containers with NVIDIA GPUs. It enables GPU-accelerated applications to run in containers, providing access to the GPU hardware and libraries, and facilitating the deployment of GPU-accelerated workloads in a containerized environment.
 
-## Installing
+## ⚙️ Installing
 1. Choosing Nvidia and TensorFlow dependencies
     * Check GPU <br>
         My gpu is `Nvidia Tesla T4`.
@@ -134,7 +134,7 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         ```
         ![2a76172b-e0e0-4c21-93ba-c47a68c47e8d](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/f1d75319-f045-44dc-89bd-ca3cd98cdeab)
 
-## Uninstalling
+## ⚙️ Uninstalling
 1. Uninstall Nvidia driver
     ```
     sudo apt-get --purge remove -y "*nvidia*" "libxnvctrl*"
@@ -173,3 +173,19 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
     ```
     sudo reboot
     ```
+
+## ⚙️ Fixings
+When executing the command `nvidia-smi` and encountering the error message `NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Ensure that the latest NVIDIA driver is installed and operational.`, you can resolve it by running the following command.
+1. Fix broken
+   ```
+   sudo apt --fix-broken install
+   ```
+2. Reboot
+    ```
+    sudo reboot
+    ```
+3. Re-checked Nvidia driver
+   ```
+   nvidia-smi
+   ```
+   ![a77dd133-3b92-4444-aad1-0bf41bd204df](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/0ba2f2e5-56b3-4531-a5de-418b5eb091b4)
