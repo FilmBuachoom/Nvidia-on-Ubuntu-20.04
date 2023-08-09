@@ -28,16 +28,20 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
 
     * Select the version of TensorFlow that supports CUDA version ([checked here](https://www.tensorflow.org/install/source#gpu)) <br>
         As it uses `CUDA Toolkit 11.2`, TensorFlow can be used from `2.5.0 - 2.11.0`. <br>
-        For `TensorFlow 2.5.0 - 2.11.0`, `CUDA Toolkit 11.2` and `cuDNN 8.1` are supported.
+        For `TensorFlow 2.5 - 2.11`, `CUDA Toolkit 11.2` and `cuDNN 8.1` are supported.
 
     * Verify that Nvidia-driver supports CUDA Toolkit version ([checked here](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#default-to-minor-version)) <br>
         ![image](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/c793bc38-a595-4f40-b519-4a36e1b8c5c4)
 
     * Summary software dependencies <br>
-        * Nvidia-driver 525
-        * tensorflow==2.5.0 - tensorflow==2.11.0
-        * CUDA Toolkit 11.2
-        * cuDNN 8.1
+      | Package name | Version |
+      | --- | --- |
+      | Nvidia-driver | 525 |
+      | CUDA | 11.2.2 |
+      | cuDNN | 8.1.1 |
+      | TensorRT | 7.2.3.4 |
+      | TensorFlow | 2.11 |
+      | Python | 3.8 |
 
 2. Install Nvidia Driver 525
     * Add the Graphics Drivers PPA (Personal Package Archive) to your system
@@ -71,7 +75,7 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
            ```
            ![image](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/f2129ebc-ff0d-4c5f-b661-72c609c4c0ea)
          
-    * Choice II
+    * Choice II (Recommended)
       * Download & Install CUDA 11.2 Toolkit
            ```
            sudo wget /etc/apt/preferences.d/cuda-repository-pin-600 https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin
@@ -91,7 +95,7 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
            ```
            sudo apt-get install -y --no-install-recommends cuda
            ```
-      * Remove downloaded file
+      * Remove downloaded file (optional)
            ```
            sudo rm -rf /var/cuda-repo-wsl-ubuntu-11-2-local cuda-repo-wsl-ubuntu-11-2-local_11.2.2-1_amd64.deb
            ```
@@ -115,16 +119,39 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
         sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
         ```
-5. Add the CUDA environment variables <br>
-    Create a shell script to declare the address of the cuda folder. `activate-cuda.sh` and save to `/etc/profile.d/`
-    ```
-    #!/bin/bash
 
-    # Add the CUDA environment variables + set .sh file @ /etc/profile.d/
-    echo 'export PATH=/usr/local/cuda-11.2/bin:$PATH' >> ~/.bashrc
-    echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
-    source ~/.bashrc
-    ```
+5. Install TensorRT 7
+   * Install TensorRT version 7.2.3.4
+   * Find TensorRT library on your machine <br>
+     On my machine TensorRT library is @ `/usr/local/lib/python3.8/dist-packages`
+     ```
+     sudo pip3 show tensorrt
+     ```
+     OR
+     ```
+     sudo pip3 show nvidia-pyindex
+     ```
+   * Copy TensorRT library to CUDA environment 
+     ```
+     sudo cp -R /usr/local/lib/python3.8/dist-packages/tensorrt/* /usr/local/cuda-11/lib64
+     sudo cp -R /usr/local/lib/python3.8/dist-packages/nvidia/cuda_nvrtc/lib/* /usr/local/cuda-11/lib64
+     ```
+        
+5. Add the CUDA environment variables <br>
+   * Create a shell script to declare the address of the cuda folder. `activate-cuda.sh` and save to `/etc/profile.d/`
+       ```
+       #!/bin/bash
+   
+       # Add the CUDA environment variables + set .sh file @ /etc/profile.d/
+       echo 'export PATH=/usr/local/cuda-11.2/bin:$PATH' >> ~/.bashrc
+       echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+       source ~/.bashrc
+       ```
+   * Reboot
+     ```
+     sudo reboot
+     ```
+   
 6. Verify CUDA installation
     * Verify CUDA installation
         ```
