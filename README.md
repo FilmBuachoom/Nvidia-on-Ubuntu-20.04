@@ -60,15 +60,41 @@ NVIDIA Docker runtime is a software component that integrates Docker containers 
         ![a77dd133-3b92-4444-aad1-0bf41bd204df](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/0ba2f2e5-56b3-4531-a5de-418b5eb091b4)
 
 3. Install CUDA Toolkit
-    * Download CUDA 11.2 Toolkit ([CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive))
-        ```
-        sudo wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
-        ```
-    * Install the NVIDIA CUDA 11.2 Toolkit (DO NOT check the option of installing the driver!!!)
-        ```
-        sudo sh cuda_11.2.2_460.32.03_linux.run
-        ```
-        ![image](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/f2129ebc-ff0d-4c5f-b661-72c609c4c0ea)
+    * Choice I
+       * Download CUDA 11.2 Toolkit ([CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive))
+           ```
+           sudo wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
+           ```
+       * Install the NVIDIA CUDA 11.2 Toolkit (DO NOT check the option of installing the driver!!!)
+           ```
+           sudo sh cuda_11.2.2_460.32.03_linux.run
+           ```
+           ![image](https://github.com/FilmBuachoom/Nvidia-on-Ubuntu-20.04/assets/109780340/f2129ebc-ff0d-4c5f-b661-72c609c4c0ea)
+         
+    * Choice II
+      * Download & Install CUDA 11.2 Toolkit
+           ```
+           sudo wget /etc/apt/preferences.d/cuda-repository-pin-600 https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin
+           sudo wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda-repo-wsl-ubuntu-11-2-local_11.2.2-1_amd64.deb
+           sudo dpkg -i cuda-repo-wsl-ubuntu-11-2-local_11.2.2-1_amd64.deb
+           ```
+      * Install GNU Privacy Guard
+           ```
+           sudo apt-get install -y gnupg
+           ```
+      * Add a public key to the list of trusted keys
+           ```
+           sudo apt-key add /var/cuda-repo-wsl-ubuntu-11-2-local/7fa2af80.pub
+           sudo apt-get update
+           ```
+      * Install CUDA
+           ```
+           sudo apt-get install -y --no-install-recommends cuda
+           ```
+      * Remove downloaded file
+           ```
+           sudo rm -rf /var/cuda-repo-wsl-ubuntu-11-2-local cuda-repo-wsl-ubuntu-11-2-local_11.2.2-1_amd64.deb
+           ```
         
 4. Install cuDNN 8.1.1
     * Install prerequisites library
